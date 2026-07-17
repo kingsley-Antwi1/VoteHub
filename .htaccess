@@ -1,0 +1,14 @@
+RewriteEngine On
+
+# Security headers
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "DENY"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# School portal routing: /school/{slug} -> school/index.php?slug={slug}
+RewriteRule ^school/([a-z0-9-]+)$ school/index.php?slug=$1 [L,QSA]
+
+# Institution admin portal
+RewriteRule ^institution/(.+)$ institution/$1 [L,QSA]

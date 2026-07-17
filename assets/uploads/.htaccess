@@ -1,0 +1,7 @@
+# Deny direct access to uploaded files
+Deny from all
+
+# But allow specific file types needed by the app
+<FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+    Allow from all
+</FilesMatch>
